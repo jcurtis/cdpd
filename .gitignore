@@ -1,3 +1,5 @@
 tmp/*
 *.DS_Store
 *.swp
+public/assets/lib_*
+

@@ -2,4 +2,4 @@ tmp/*
 *.DS_Store
 *.swp
 public/assets/lib_*
-
+node_modules

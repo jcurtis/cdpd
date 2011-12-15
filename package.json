@@ -7,5 +7,6 @@
   "engines": { "node": ">= 0.4.0 < 0.5.0" },
   "dependencies": {
     "socketstream": "~>0.2.0"
-  }
+  },
+  "scripts": { "start": "node_modules/socketstream/bin/socketstream start" }
 }

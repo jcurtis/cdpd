@@ -12,3 +12,11 @@ exports.actions =
       cb true                                         # Confirm it was sent to the originating client
     else
       cb false
+
+  sendChange: (info, cb) ->
+    if info
+      console.log(info)
+      cb true
+    else
+      cb false
+

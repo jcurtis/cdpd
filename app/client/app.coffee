@@ -7,9 +7,13 @@ SS.socket.on 'reconnect', ->   $('#message').text('SocketStream server is up :-)
 # This method is called automatically when the websocket connection is established. Do not rename/delete
 exports.init = ->
   
+  # Setup CodeMirror
   options = 
     lineNumbers: true
-    mode: "javascript"
+    mode: "null"
+    onChange: (instance, info) ->
+      SS.server.app.sendChange info
+
   codeMirror = CodeMirror.fromTextArea(document.getElementById("code"), options)
 
   # Make a call to the server to retrieve a message

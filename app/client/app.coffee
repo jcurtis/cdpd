@@ -1,10 +1,13 @@
 # Client-side Code
 
 # Bind to socket events
-SS.socket.on 'disconnect', ->  $('#message').text('SocketStream server is down :-(')
-SS.socket.on 'reconnect', ->   $('#message').text('SocketStream server is up :-)')
+SS.socket.on 'disconnect', ->  
+  $('#message').text('SocketStream server is down :-(')
+SS.socket.on 'reconnect', ->   
+  $('#message').text('SocketStream server is up :-)')
 
-# This method is called automatically when the websocket connection is established. Do not rename/delete
+# This method is called automatically when the websocket 
+# connection is established. Do not rename/delete
 exports.init = ->
   
   # Setup CodeMirror
@@ -23,7 +26,8 @@ exports.init = ->
         #do nothing
         return
       )
-      codeMirror.replaceRange info.change.text[0], info.change.from, info.change.to
+      codeMirror.replaceRange info.change.text[0], 
+        info.change.from, info.change.to
       codeMirror.setOption('onChange', tmp)
 
 

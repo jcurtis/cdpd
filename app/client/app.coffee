@@ -11,14 +11,25 @@ exports.init = ->
   options = 
     lineNumbers: true
     mode: "null"
-    onChange: (instance, info) ->
-      SS.server.app.sendChange info
+    onChange: (instance, change) ->
+      SS.server.app.sendChange change
 
   codeMirror = CodeMirror.fromTextArea(document.getElementById("code"), options)
 
-  # Make a call to the server to retrieve a message
-  #SS.server.app.init (response) ->
-  # $('#message').text(response)
+  SS.events.on 'newChange', (info) ->
+    if sessionId() != info.session_id
+      tmp = codeMirror.getOption('onChange')
+      codeMirror.setOption('onChange', () -> 
+        #do nothing
+        return
+      )
+      codeMirror.replaceRange info.change.text[0], info.change.from, info.change.to
+      codeMirror.setOption('onChange', tmp)
 
-  # Start the Quick Chat Demo
-  #SS.client.demo.init()
+
+# Private methods
+#
+sessionId = () ->
+  id = document.cookie.valueOf "session_id" 
+  val = id.split('=')[1]
+  return val

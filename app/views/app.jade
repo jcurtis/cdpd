@@ -18,4 +18,9 @@ html(lang="en")
           textarea#code
       #rightcolumn
         #chat
-          textarea#chatarea
+          #messageContainer
+            #messages
+
+          form#sendMessage
+            input(id='newMessage', type='text', name='message', autocomplete='off')
+            input(id='sendButton', type='submit', value='Send')

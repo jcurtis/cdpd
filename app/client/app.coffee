@@ -10,7 +10,7 @@ SS.socket.on 'reconnect', ->
 # connection is established. Do not rename/delete
 exports.init = ->
   
-  # Setup CodeMirror
+  # Editor
   options = 
     lineNumbers: true
     mode: "null"
@@ -30,6 +30,15 @@ exports.init = ->
         info.change.from, info.change.to
       codeMirror.setOption('onChange', tmp)
 
+  #Chat
+  $('form#sendMessage').submit ->
+    newMessage = $('#newMessage').val()
+    SS.server.app.sendMessage newMessage, (response) ->
+      if response.error then alert(response.error) else $('newMessage').val('')
+    false
+
+  SS.events.on 'newMessage', (message) ->
+    $('templates-message').tmpl(message).appendTo('#messages')
 
 # Private methods
 #

@@ -17,3 +17,9 @@ exports.actions =
     else
       cb false
 
+  sendMessage: (message, cb) ->
+    if message?
+      SS.publish.broadcast 'newMessage', message
+      cb true
+    else
+      cb false

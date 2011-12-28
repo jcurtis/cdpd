@@ -5,22 +5,28 @@ html(lang="en")
     meta(charset="utf-8")
     title cdpd: code with friends
   body
-    #content
-      #banner
-        h1 This is a work in progress.
-        p 
-          a(href="https://github.com/jcurtis/cdpd"
-          target="_blank") github repo
-      #leftcolumn
-        #menu
-          a this is where the menu goes
-        #editor
-          textarea#code
-      #rightcolumn
+    .topbar
+      .topbar-inner
+        .container-fluid
+          a.brand cdpd
+          ul.nav 
+            li 
+              a(href="https://github.com/jcurtis/cdpd"
+              target="_blank") repo
+          p(class="pull-right") A work in progress...
+
+    .container-fluid
+      .sidebar
         #chat
           #messageContainer
             #messages
 
-          form#sendMessage
-            input(id='newMessage', type='text', name='message', autocomplete='off')
-            input(id='sendButton', type='submit', value='Send')
+              form#sendMessage
+                input(id='newMessage', type='text', name='message', autocomplete='off')
+                  input(id='sendButton', type='submit', value='Send')
+                    #content
+                      #menu
+                        a this is where the menu goes
+      .content
+        #editor
+          textarea#code

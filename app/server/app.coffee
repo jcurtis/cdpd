@@ -19,7 +19,7 @@ exports.actions =
 
   sendMessage: (message, cb) ->
     if message?
-      SS.publish.broadcast 'newMessage', message
+      SS.publish.broadcast 'newMessage', {user: 'user1', body: message}
       cb true
     else
       cb false

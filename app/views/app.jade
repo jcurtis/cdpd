@@ -16,17 +16,14 @@ html(lang="en")
           p(class="pull-right") A work in progress...
 
     .container-fluid
-      .sidebar
-        #chat
-          #messageContainer
-            #messages
+      .sidebar#chat
+        #messageContainer
+          #messages
 
-              form#sendMessage
-                input(id='newMessage', type='text', name='message', autocomplete='off')
-                  input(id='sendButton', type='submit', value='Send')
-                    #content
-                      #menu
-                        a this is where the menu goes
+        form#sendMessage
+          input(id='newMessage', type='text', name='message', autocomplete='off')
+          input(id='sendButton', type='submit', value='Send')
+
       .content
         #editor
           textarea#code

@@ -34,11 +34,11 @@ exports.init = ->
   $('form#sendMessage').submit ->
     newMessage = $('#newMessage').val()
     SS.server.app.sendMessage newMessage, (response) ->
-      if response.error then alert(response.error) else $('newMessage').val('')
+      if response.error then alert(response.error) else $('#newMessage').val('')
     false
 
   SS.events.on 'newMessage', (message) ->
-    $('templates-message').tmpl(message).appendTo('#messages')
+    $('#templates-message').tmpl(message).appendTo('#messages')
 
 # Private methods
 #

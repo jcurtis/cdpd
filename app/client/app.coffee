@@ -26,8 +26,7 @@ exports.init = ->
         #do nothing
         return
       )
-      codeMirror.replaceRange info.change.text[0], 
-        info.change.from, info.change.to
+      renderChange codeMirror, info.change
       codeMirror.setOption('onChange', tmp)
 
   #Chat
@@ -46,3 +45,14 @@ sessionId = () ->
   id = document.cookie.valueOf "session_id" 
   val = id.split('=')[1]
   return val
+
+renderChange = (instance, change) ->
+  #format the changes
+  insert = change.text[0]
+  for line in change.text[1..]
+    insert += '\n' + line 
+
+  instance.replaceRange insert, change.from, change.to
+  if change.next?
+    renderChange instance, change.next
+

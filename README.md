@@ -1,12 +1,12 @@
-Prototype for c(o)d(e)p(a)d project.
+# Prototype for c(o)d(e)p(a)d project.
 http://cdpd.no.de
 
-###### Required to run project:
-* node.js
-* socketstream
-* redis
+### Requirements
+* [node.js](http://nodejs.org/)
+* [socketstream](https://github.com/socketstream/socketstream)
+* [redis](http://redis.io/)
 * optional
-  * foreman
+  * [foreman](http://ddollar.github.com/foreman/)
 
 ### Install dependencies (requires npm 1.*)
     npm install

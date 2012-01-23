@@ -4,3 +4,4 @@ tmp/*
 public/assets/lib_*
 node_modules
 dump.rdb
+.nide

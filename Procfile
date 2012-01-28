@@ -1,3 +1,3 @@
 web: node_modules/socketstream/bin/socketstream start
-db: redis-server
+db: redis-server config/redis.conf
 

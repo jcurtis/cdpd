@@ -13,6 +13,20 @@ html(lang="en")
             li 
               a(href="https://github.com/jcurtis/cdpd"
               target="_blank") repo
+            li
+              a#undo undo
+            li
+              a#redo redo
+            li.dropdown(data-dropdown="dropdown")
+              a.dropdown-toggle highlighting
+              ul.dropdown-menu
+                li
+                  a plain-text
+                li
+                  a coffeescript
+                li.divider
+                li
+                  a mysql
           p(class="pull-right") A work in progress...
 
     .container-fluid

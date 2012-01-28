@@ -9,7 +9,8 @@ exports.config =
   # HTTP server (becomes secondary server when HTTPS is enabled)
   http:
     port:         process.env.PORT || 3000
-    hostname:     "0.0.0.0" #""192.168.1.104
+    hostname:     "0.0.0.0" 
+    #hostname:     "192.168.1.104"
   
   # HTTPS server (becomes primary server if enabled)
   https:

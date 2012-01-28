@@ -36,6 +36,16 @@ exports.init = ->
 
   codeMirror = CodeMirror.fromTextArea(document.getElementById("code"), options)
 
+  # Editor features
+  $('#undo').click ->
+    codeMirror.undo()
+  $('#redo').click ->
+    codeMirror.redo()
+  $('#highlight').change ->
+    mode = $('#highlight option:selected').val()
+    codeMirror.setOption 'mode', mode
+
+  # Editor sync
   SS.events.on 'newChange', (info) ->
     if sessionId() != info.session_id
       tmp = codeMirror.getOption('onChange')

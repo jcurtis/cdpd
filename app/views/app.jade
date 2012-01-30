@@ -13,21 +13,38 @@ html(lang="en")
             li 
               a(href="https://github.com/jcurtis/cdpd"
               target="_blank") repo
+          ul.nav.secondary-nav
             li
               a#undo undo
             li
               a#redo redo
             li.dropdown(data-dropdown="dropdown")
-              a.dropdown-toggle highlighting
+              a.dropdown-toggle#highlight-menu highlighting
               ul.dropdown-menu
                 li
-                  a plain-text
-                li
-                  a coffeescript
+                  a.highlight(mode="text/plain-text") Plain
                 li.divider
                 li
-                  a mysql
-          p(class="pull-right") A work in progress...
+                  a.highlight(mode="text/x-csrc") C
+                li
+                  a.highlight(mode="text/x-c++src") C
+                li
+                  a.highlight(mode="text/css") CSS
+                li
+                  a.highlight(mode="text/html") HTML
+                li
+                  a.highlight(mode="text/x-java") Java
+                li
+                  a.highlight(mode="text/javascript") JavaScript
+                li
+                  a.highlight(mode="text/x-mysql") SQL
+                li
+                  a.highlight(mode="text/x-php") PHP
+                li
+                  a.highlight(mode="text/x-python") Python
+                li
+                  a.highlight(mode="text/x-ruby") Ruby
+            p(class="pull-right") A work in progress...
 
     .container-fluid
       .sidebar#chat

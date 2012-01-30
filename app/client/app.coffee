@@ -41,9 +41,11 @@ exports.init = ->
     codeMirror.undo()
   $('#redo').click ->
     codeMirror.redo()
-  $('#highlight').change ->
-    mode = $('#highlight option:selected').val()
+  $('.highlight').click ->
+    mode = this.getAttribute 'mode'
     codeMirror.setOption 'mode', mode
+    $('#highlight-menu').text(this.text)
+    console.log 'mode changed to ' + mode
 
   # Editor sync
   SS.events.on 'newChange', (info) ->

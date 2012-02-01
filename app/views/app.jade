@@ -5,21 +5,25 @@ html(lang="en")
     meta(charset="utf-8")
     title cdpd: code with friends
   body
-    .topbar
-      .topbar-inner
+    .navbar.navbar-fixed-top
+      .navbar-inner
         .container-fluid
           a.brand cdpd
           ul.nav 
+            li
+              a#new(href="http://cdpd.no.de/"
+                target="_blank") new
             li 
               a(href="https://github.com/jcurtis/cdpd"
               target="_blank") repo
-          ul.nav.secondary-nav
+          ul.nav.pull-right
             li
               a#undo undo
             li
               a#redo redo
-            li.dropdown(data-dropdown="dropdown")
-              a.dropdown-toggle#highlight-menu highlighting
+            li.dropdown
+              a.dropdown-toggle#highlight-menu(data-toggle="dropdown", href="#") highlighting
+               b.caret
               ul.dropdown-menu
                 li
                   a.highlight(mode="text/plain-text") Plain
@@ -44,7 +48,8 @@ html(lang="en")
                   a.highlight(mode="text/x-python") Python
                 li
                   a.highlight(mode="text/x-ruby") Ruby
-            p(class="pull-right") A work in progress...
+            li
+              p.navbar-text A work in progress...
 
     .container-fluid
       .sidebar#chat

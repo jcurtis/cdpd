@@ -22,15 +22,18 @@ exports.actions =
 
   create: (cb) ->
     # Generate a guid
-    guid = "xxxxxxxx-xxxx-4xxx-yxxx-xxxxxxxxxxxx".replace /[xy]/g, (c) ->
+    #guid = "xxxxxxxx-xxxx-4xxx-yxxx-xxxxxxxxxxxx".replace /[xy]/g, (c) ->
+    guid = "xxxxxxxx".replace /[xy]/g, (c) ->
       r = Math.random() * 16 | 0
       v = (if c is "x" then r else (r & 0x3 | 0x8))
       v.toString 16
     # Create database entry for guid
     R.set "pad:#{guid}", "New pad."
     # Subscribe user to this channel
-    @session.channel.subscribe(guid)
-    SS.publish.channel [guid], 'loadPad', {guid: guid, text: "New pad."}
+    channel  = "channel#{guid}"
+    console.log "subscribing to: " + channel
+    @session.channel.subscribe(channel)
+    SS.publish.channel([channel], 'loadPad', {guid: guid, text: "New pad."})
     cb true
 
 
@@ -47,6 +50,4 @@ exports.actions =
       cb true
     else
       cb false
-
-# Private functions
 

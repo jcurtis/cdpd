@@ -2,16 +2,19 @@
 
 # Bind to socket events
 SS.socket.on 'disconnect', ->  
-  $('#message').text('SocketStream server is down :-(')
+  $('#message').text('server: disconnect')
 SS.socket.on 'reconnect', ->   
-  $('#message').text('SocketStream server is up :-)')
+  $('#message').text('server: reconnect')
 
 # This method is called automatically when the websocket 
 # connection is established. Do not rename/delete
 exports.init = ->
 
   SS.server.app.init (user) ->
-    if user then console.log('user logged in: ' + user)
+    if user
+      console.log('user logged in: ' + user)
+    else
+      console.log('user does not exist yet')
 
   # Set up new pad
   if location.hash == ""
@@ -22,7 +25,7 @@ exports.init = ->
     SS.server.app.load location.hash, (pad) ->
       if pad then console.log('pad loaded')
 
-  SS.events.on 'loadPad', (pad) ->
+  SS.events.on 'loadPad', (pad, channel_name) ->
     codeMirror.setValue(pad.text)
     location.hash = pad.guid
 

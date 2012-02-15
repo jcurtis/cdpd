@@ -1,7 +1,8 @@
-tmp/*
-*.DS_Store
-*.swp
-public/assets/lib_*
-node_modules
+.DS_Store
 dump.rdb
-.nide
+npm-debug.log
+tmp
+public/assets
+cdpd
+node_modules
+*.swp

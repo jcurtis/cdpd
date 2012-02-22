@@ -3,12 +3,11 @@ html(lang="en")
   head
     != SocketStream
     meta(charset="utf-8")
-    title Welcome
+    title cdpd: code with friends
   body
     #content
-      a(href='https://github.com/socketstream/socketstream')
-        img(src='/images/logo.png', alt='SocketStream Logo', width=167, height=159)
-      h1 Welcome to your new realtime app!
+      #editor
+        textarea#code
       
       // QUICK CHAT DEMO
       form#demo(onsubmit='return false')

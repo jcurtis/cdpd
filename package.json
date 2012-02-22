@@ -1,8 +1,8 @@
 {
-  "name": "my_realtime_app",
-  "description": "An awesome real time application",
+  "name": "cdpd",
+  "description": "Code with friends.",
   "version": "0.0.1",
-  "author": "Me <me@mydomain.com>",
+  "author": "Jamie Curtis <jamocurtis@gmail.com>",
   "private": true,
   "engines": { "node": ">= 0.6.0" },
   "dependencies": {

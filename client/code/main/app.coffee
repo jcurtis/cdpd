@@ -1,6 +1,4 @@
 
-
-
 # wait for connection
 SocketStream.event.on 'ready', ->
   console.log "server ready"
@@ -11,4 +9,4 @@ SocketStream.event.on 'ready', ->
     mode: 'null'
     #onChange: (instance, change) ->
   code = CodeMirror(document.getElementById("editor"), options)
-
+  

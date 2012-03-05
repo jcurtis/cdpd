@@ -1,4 +1,3 @@
-tools = require('tools')
 pad = require('pad')
 
 # wait for connection
@@ -17,6 +16,10 @@ SocketStream.event.on 'ready', ->
   if $.address.hash().length > 0
     pad.load $.address.hash(), (pad) ->
       code.setValue(pad)
+  else
+    pad.new (id, pad) ->
+      code.setValue(pad)
+      $.address.hash(id)
    
   ss.event.on 'pubChange', (info) ->
     if sessionId() != info.session_id

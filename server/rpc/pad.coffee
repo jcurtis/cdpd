@@ -1,15 +1,17 @@
+db = require('redis').createClient()
 
 exports.actions = (req, res, ss) ->
 
   req.use('session')
 
   load: (id) ->
-    if id && id.length == "xxxxxxxx-xxxx-4xxx-yxxx-xxxxxxxxxxxx".length
-      #todo: fetch pad
-      pad = "remember to implement redis"
+    if valid(id)
+      db.get "pad:#{id}", (err, data) ->
+        if err
+          res('error loading pad from database')
+        else
+          res(data)
       req.session.channel.subscribe(id)
-      #ss.publish.channel(id, 'loadPad', pad)
-      res(pad)
     else
       res("empty")
 
@@ -24,10 +26,19 @@ exports.actions = (req, res, ss) ->
       res(true)
     else
       res(false)
-      
-valid = (id) ->
-  if id && id.length == "xxxxxxxx-xxxx-4xxx-yxxx-xxxxxxxxxxxx".length
-    true
-  else
-    false
 
+  new: () ->
+    newId = uuid()
+    defaultText = "default text"
+    db.set "pad:#{newId}", defaultText 
+    res(newId, defaultText)
+
+valid = (id) ->
+  id && id.length == "xxxxxxxx-xxxx-4xxx-yxxx-xxxxxxxxxxxx".length
+
+uuid = () ->
+  id = "xxxxxxxx-xxxx-4xxx-yxxx-xxxxxxxxxxxx".replace /[xy]/g, (c) ->
+    r = Math.random() * 16 | 0
+    v = (if c is "x" then r else (r & 0x3 | 0x8))
+    v.toString 16
+  id

@@ -1,5 +1,7 @@
 var http = require('http')
-  , ss = require('socketstream');
+  , ss = require('socketstream')
+  , redis = require('redis')
+  , db = redis.createClient();
 
 ss.client.define('main', {
   view: 'app.jade',
@@ -27,8 +29,8 @@ var consoleServer = require('ss-console').init(ss);
 consoleServer.listen(5000);
 
 // Redis
-// ss.session.store.use('redis');
-// ss.publish.transport.use('redis');
+ss.session.store.use('redis');
+ss.publish.transport.use('redis');
 
 // Start web server
 var server = http.Server(ss.http.middleware);

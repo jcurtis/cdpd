@@ -8,6 +8,9 @@ exports.load = (id, cb) ->
 exports.sendChange = (id, change, cb) ->
   ss.rpc('pad.sendChange', id, change, cb)
 
+exports.new = (cb) ->
+  ss.rpc('pad.new', cb)
+
 # private
 valid = (id) ->
   id && id.length == "xxxxxxxx-xxxx-4xxx-yxxx-xxxxxxxxxxxx".length

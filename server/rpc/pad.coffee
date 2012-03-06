@@ -34,6 +34,10 @@ exports.actions = (req, res, ss) ->
     db.set "pad:#{newId}", defaultText 
     res(newId, defaultText)
 
+  save: (id, text) ->
+    db.set "pad:#{id}", text
+    res(true)
+
 valid = (id) ->
   id && id.length == "xxxxxxxx-xxxx-4xxx-yxxx-xxxxxxxxxxxx".length
 

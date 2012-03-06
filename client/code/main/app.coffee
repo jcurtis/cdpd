@@ -1,14 +1,22 @@
 pad = require('pad')
+time = setTimeout '', 0
 
 # wait for connection
 SocketStream.event.on 'ready', ->
   console.log "server ready"
+  
+  savePad = ->
+    console.log 'saving...'
+    pad.save $.address.hash(), code.getValue(), ->
+      console.log 'saved'
 
   # Configure CodeMirror2 editor
   options =
     lineNumbers: true
     mode: 'null'
     onChange: (instance, change) ->
+      clearTimeout(time)
+      time = setTimeout(savePad, 5000)
       pad.sendChange($.address.hash(), change)
   code = CodeMirror(document.getElementById("editor"), options)
 
@@ -55,4 +63,3 @@ renderChange = (instance, change) ->
   instance.replaceRange insert, change.from, change.to
   if change.next?
     renderChange instance, change.next
-

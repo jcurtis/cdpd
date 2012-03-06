@@ -15,10 +15,18 @@ SocketStream.event.on 'ready', ->
   #loading
   if $.address.hash().length > 0
     pad.load $.address.hash(), (pad) ->
+      tmp = code.getOption('onChange')
+      code.setOption 'onChange', () ->
+        return
       code.setValue(pad)
+      code.setOption('onChange', tmp)
   else
     pad.new (id, pad) ->
+      tmp = code.getOption('onChange')
+      code.setOption 'onChange', () ->
+        return
       code.setValue(pad)
+      code.setOption('onChange', tmp)
       $.address.hash(id)
    
   ss.event.on 'pubChange', (info) ->

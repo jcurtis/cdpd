@@ -6,12 +6,12 @@ exports.actions = (req, res, ss) ->
 
   load: (id) ->
     if valid(id)
+      req.session.channel.subscribe(id)
       db.get "pad:#{id}", (err, data) ->
         if err
           res('error loading pad from database')
         else
           res(data)
-      req.session.channel.subscribe(id)
     else
       res("empty")
 
@@ -22,14 +22,15 @@ exports.actions = (req, res, ss) ->
         change: change,
         session_id: req.session.id
       }
-      ss.publish.channel(id, 'pubChange', info)
-      res(true)
+      ss.publish.channel id, 'pubChange', info, (cb) ->
+        res(c)
     else
       res(false)
 
   new: () ->
     newId = uuid()
     defaultText = "default text"
+    req.session.channel.subscribe(newId)
     db.set "pad:#{newId}", defaultText 
     res(newId, defaultText)
 

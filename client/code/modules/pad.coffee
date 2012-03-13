@@ -14,6 +14,9 @@ exports.new = (cb) ->
 exports.save = (id, text, cb) ->
   ss.rpc 'pad.save', id, text, cb
 
+exports.setMode = (id, mode, cb) ->
+  ss.rpc 'pad.setMode', id, mode, cb
+
 # private
 valid = (id) ->
   id && id.length == "xxxxxxxx-xxxx-4xxx-yxxx-xxxxxxxxxxxx".length

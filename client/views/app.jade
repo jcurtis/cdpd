@@ -7,12 +7,45 @@ html(lang="en")
   body
     .navbar.navbar-fixed-top
       .navbar-inner
-        .container
+        .container-fluid
+          a.btn.btn-navbar(data-toggle="collapse", data-target=".nav-collapse")
+            span.icon-bar
+            span.icon-bar
+            span.icon-bar
           a.brand cdpd
-          ul.nav
-            li
-              a#new(href="http://cdpd.no.de/", target="_blank") new
-          p.navbar-text.pull-right
-            a(href="http://github.com/jcurtis/cdpd") Fork on GitHub
-    #content
+          .nav-collapse
+            ul.nav
+              li
+                a#new(href="http://cdpd.no.de/", target="_blank") New
+              li.dropdown
+                a.dropdown-toggle(href="#", data-toggle="dropdown") 
+                  span#syntax-menu-title Syntax
+                  b.caret
+                ul.dropdown-menu
+                  li
+                    a.syntax(mode="text/plain-text") Plain
+                  li.divider
+                  li
+                    a.syntax(mode="text/x-csrc") C
+                  li
+                    a.syntax(mode="text/x-c++src") C++
+                  li
+                    a.syntax(mode="text/css") CSS
+                  li
+                    a.syntax(mode="text/html") HTML
+                  li
+                    a.syntax(mode="text/x-java") Java
+                  li
+                    a.syntax(mode="text/javascript") JavaScript
+                  li
+                    a.syntax(mode="text/x-mysql") SQL
+                  li
+                    a.syntax(mode="text/x-php") PHP
+                  li
+                    a.syntax(mode="text/x-python") Python
+                  li
+                    a.syntax(mode="text/x-ruby") Ruby
+            p.navbar-text.pull-right
+              a(href="http://github.com/jcurtis/cdpd", target="_blank") Fork on GitHub
+    .container-fluid
       #editor

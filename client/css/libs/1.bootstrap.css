@@ -3596,3 +3596,6 @@ a.thumbnail:hover {
 .alert {
   text-shadow: none !important;
 }
+body {
+  padding-top: 50px;
+}

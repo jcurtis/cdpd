@@ -34,6 +34,6 @@ ss.publish.transport.use('redis');
 
 // Start web server
 var server = http.Server(ss.http.middleware);
-server.listen(3000);
+server.listen(15539);
 
 ss.start(server);

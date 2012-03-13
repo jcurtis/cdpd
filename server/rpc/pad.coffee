@@ -7,11 +7,11 @@ exports.actions = (req, res, ss) ->
   load: (id) ->
     if valid(id)
       req.session.channel.subscribe(id)
-      db.get "pad:#{id}", (err, data) ->
+      db.hgetall "pad:#{id}", (err, obj) ->
         if err
           res('error loading pad from database')
         else
-          res(data)
+          res(obj)
     else
       res("empty")
 
@@ -23,7 +23,7 @@ exports.actions = (req, res, ss) ->
         session_id: req.session.id
       }
       ss.publish.channel id, 'pubChange', info, (cb) ->
-        res(c)
+        res(cb)
     else
       res(false)
 
@@ -31,12 +31,18 @@ exports.actions = (req, res, ss) ->
     newId = uuid()
     defaultText = "default text"
     req.session.channel.subscribe(newId)
-    db.set "pad:#{newId}", defaultText 
+    db.hset "pad:#{newId}", 'text', defaultText 
+    db.hset "pad:#{newId}", 'mode', 'text/plain-text' 
     res(newId, defaultText)
 
   save: (id, text) ->
-    db.set "pad:#{id}", text
+    db.hset "pad:#{id}", 'text', text
     res(true)
+
+  setMode: (id, mode) ->
+    db.hset "pad:#{id}", 'mode', mode
+    ss.publish.channel id, 'pubMode', mode, (cb) ->
+      res(cb)
 
 valid = (id) ->
   id && id.length == "xxxxxxxx-xxxx-4xxx-yxxx-xxxxxxxxxxxx".length

@@ -1,6 +1,7 @@
 pad = require('pad')
 time = setTimeout '', 0
 
+
 # wait for connection
 SocketStream.event.on 'ready', ->
   console.log "server ready"
@@ -22,12 +23,13 @@ SocketStream.event.on 'ready', ->
 
   #loading
   if $.address.hash().length > 0
-    pad.load $.address.hash(), (pad) ->
+    pad.load $.address.hash(), (obj) ->
       tmp = code.getOption('onChange')
       code.setOption 'onChange', () ->
         return
-      code.setValue(pad)
+      code.setValue(obj.text)
       code.setOption('onChange', tmp)
+      code.setOption('mode', obj.mode)
   else
     pad.new (id, pad) ->
       tmp = code.getOption('onChange')
@@ -45,6 +47,22 @@ SocketStream.event.on 'ready', ->
         return
       renderChange code, info.change
       code.setOption('onChange', tmp)
+
+  # bootstrap stuff
+  $('.dropdown-toggle').dropdown()
+  $('.collapse').collapse()
+
+  # enable syntax highlight switching
+  $('.syntax').click ->
+    mode = this.getAttribute 'mode'
+    code.setOption 'mode', mode
+    pad.setMode($.address.hash(), mode)
+    console.log 'mode changed to ' + mode
+
+  ss.event.on 'pubMode', (mode) ->
+    code.setOption 'mode', mode
+    $('#syntax-menu-title').text(mode)
+    console.log 'mode changed remotely to ' + mode
 
 # Private functions
 

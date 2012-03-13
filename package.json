@@ -1,11 +1,11 @@
 {
   "name": "cdpd",
   "description": "Code with friends.",
-  "version": "0.0.1",
+  "version": "0.1.1",
   "author": "Jamie Curtis <jamocurtis@gmail.com>",
   "private": true,
   "node":"0.6.12",
-  "engines": { "node": ">= 0.6.0" },
+  "engines": { "node": ">= 0.6" },
   "dependencies": {
     "ss-coffee": "0.1.x",
     "ss-stylus": "0.1.x",

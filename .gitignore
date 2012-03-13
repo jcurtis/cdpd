@@ -6,3 +6,4 @@ public/assets
 cdpd
 node_modules
 *.swp
+.nodester.appconfig

@@ -6,7 +6,7 @@ var http = require('http')
 ss.client.define('main', {
   view: 'app.jade',
   css:  ['libs', 'app.styl'],
-  code: ['libs', 'modules', 'main']
+  code: ['libs', 'app']
 });
 
 ss.http.router.on('/', function(req, res) {
@@ -34,6 +34,6 @@ ss.publish.transport.use('redis');
 
 // Start web server
 var server = http.Server(ss.http.middleware);
-server.listen(15539);
+server.listen(3000);
 
 ss.start(server);

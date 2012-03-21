@@ -7,7 +7,7 @@
   "node":"0.6.12",
   "engines": { "node": ">= 0.6" },
   "dependencies": {
-    "socketstrea": "git://github.com/socketstream/socketstream.git#e225313e5389d3c9792cb8a195fbc6f410109801",
+    "socket.io": "0.7.x",
     "ss-coffee": "0.1.x",
     "ss-stylus": "0.1.x",
     "ss-jade": "0.1.x",

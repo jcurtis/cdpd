@@ -36,8 +36,8 @@ else
     code.setOption('onChange', tmp)
     $.address.hash(id)
  
-ss.server.on 'pubChange', (info) ->
-  if sessionId() != info.session_id
+ss.event.on 'pubChange', (info, channel) ->
+  if sessionId() != info.session_id.split('/')[0]
     tmp = code.getOption('onChange')
     code.setOption 'onChange', () -> 
       #do nothing
@@ -56,7 +56,7 @@ $('.syntax').click ->
   pad.setMode($.address.hash(), mode)
   console.log 'mode changed to ' + mode
 
-ss.server.on 'pubMode', (mode) ->
+ss.event.on 'pubMode', (mode, channel) ->
   code.setOption 'mode', mode
   $('#syntax-menu-title').text(mode)
   console.log 'mode changed remotely to ' + mode
@@ -66,8 +66,8 @@ ss.server.on 'pubMode', (mode) ->
 
 sessionId = () ->
   id = document.cookie.valueOf "session_id" 
-  val = id.split('=')[1]
-  return val.split('.')[0]
+  val = id.split('=')[1].split('.')[0].split('%')[0]
+  return val
 
 renderChange = (instance, change) ->
   #format the changes

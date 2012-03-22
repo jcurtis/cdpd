@@ -16,7 +16,7 @@ html(lang="en")
           .nav-collapse
             ul.nav
               li
-                a#new(href="http://cdpd.no.de/", target="_blank") New
+                a#new(href="#", target="_blank") New
               li.dropdown
                 a.dropdown-toggle(href="#", data-toggle="dropdown") 
                   span#syntax-menu-title Syntax
@@ -45,7 +45,16 @@ html(lang="en")
                     a.syntax(mode="text/x-python") Python
                   li
                     a.syntax(mode="text/x-ruby") Ruby
+              li
+                a#share(href="#shareModal", data-toggle="modal") Share
             p.navbar-text.pull-right
               a(href="http://github.com/jcurtis/cdpd", target="_blank") Fork on GitHub
     .container-fluid
       #editor
+    #shareModal.modal.hide.fade
+      .modal-header
+        a.close(data-dismiss="modal") x
+        h3 Share
+      .modal-body
+        p Share this link with a friend to start editing the same code.
+        input#link(type="text")

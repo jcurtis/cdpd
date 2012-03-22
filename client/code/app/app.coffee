@@ -49,6 +49,8 @@ ss.event.on 'pubChange', (info, channel) ->
 $('.dropdown-toggle').dropdown()
 $('.collapse').collapse()
 
+# Main menu
+
 # enable syntax highlight switching
 $('.syntax').click ->
   mode = this.getAttribute 'mode'
@@ -61,6 +63,12 @@ ss.event.on 'pubMode', (mode, channel) ->
   $('#syntax-menu-title').text(mode)
   console.log 'mode changed remotely to ' + mode
 
+# New button
+$("#new").click ->
+  window.open($.address.baseURL())
+# Populate share field
+$("#share").click ->
+  $("#link").val(document.URL)
 
 # Private functions
 

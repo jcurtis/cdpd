@@ -22,6 +22,6 @@ Run redis server
 
     redis-server redis.conf
 
-Start node server
+Start application
 
     node app.js

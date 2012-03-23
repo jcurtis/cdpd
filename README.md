@@ -2,28 +2,25 @@
 
 ### Requirements
 
-[node.js](http://nodejs.org/)
+[node.js](http://nodejs.org/) -- I'm using 0.6.11
 
 [socketstream](https://github.com/socketstream/socketstream)
 
-    git clone https://github.com/socketstream/socketstream.git
-    cd socketstream
-    sudo npm link
+Note: SocketStream is now installed through NPM. No need to install it yourself.
 
 [redis](http://redis.io/)
 
-### Install dependencies (requires npm 1.*)
+### Install project (requires npm 1.x)
 
-In cdpd directory:
-
-    npm install
-    npm link socketstream
+    git clone https://github.com/jcurtis/cdpd.git
+    cd cdpd
+    sudo npm install
 
 ### Run server
 
 Run redis server
 
-    redis-server
+    redis-server redis.conf
 
 Start node server
 

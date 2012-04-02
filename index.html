@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset='utf-8'>
+    <meta http-equiv="X-UA-Compatible" content="chrome=1">
+
+    <link rel="stylesheet" type="text/css" href="stylesheets/stylesheet.css" media="screen" />
+    <link rel="stylesheet" type="text/css" href="stylesheets/pygment_trac.css" media="screen" />
+    <link rel="stylesheet" type="text/css" href="stylesheets/print.css" media="print" />
+
+    <title>cdpd by jcurtis</title>
+  </head>
+
+  <body>
+
+    <header>
+      <div class="container">
+        <h1>cdpd</h1>
+        <h2>Prototype for c(o)d(e)p(a)d project. Warning: still a work in progress.</h2>
+
+        <section id="downloads">
+          <a href="https://github.com/jcurtis/cdpd/zipball/master" class="btn">Download as .zip</a>
+          <a href="https://github.com/jcurtis/cdpd/tarball/master" class="btn">Download as .tar.gz</a>
+          <a href="https://github.com/jcurtis/cdpd" class="btn btn-github"><span class="icon"></span>View on GitHub</a>
+        </section>
+      </div>
+    </header>
+
+    <div class="container">
+      <section id="main_content">
+        <h1>Prototype for c(o)d(e)p(a)d project.</h1>
+
+<h3>Requirements</h3>
+
+<p><a href="http://nodejs.org/">node.js</a> -- I'm using 0.6.11</p>
+
+<p><a href="https://github.com/socketstream/socketstream">socketstream</a></p>
+
+<p>Note: SocketStream is now installed through NPM. No need to install it yourself.</p>
+
+<p><a href="http://redis.io/">redis</a></p>
+
+<h3>Install project (requires npm 1.x)</h3>
+
+<pre><code>git clone <a href="https://github.com/jcurtis/cdpd.git">https://github.com/jcurtis/cdpd.git</a>
+cd cdpd
+sudo npm install
+</code></pre>
+
+<h3>Run server</h3>
+
+<p>Run redis server</p>
+
+<pre><code>redis-server redis.conf
+</code></pre>
+
+<p>Start application</p>
+
+<pre><code>node app.js
+</code></pre>
+      </section>
+    </div>
+
+    
+  </body>
+</html>
